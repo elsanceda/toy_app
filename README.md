@@ -1,6 +1,6 @@
 # Toy App
 
-This is a Ruby on Rails app for listing toys and seeing other people's toys
+This is a Ruby on Rails app for viewing and uploading toys
 
 ## Getting started
 
