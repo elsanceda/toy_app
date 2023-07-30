@@ -11,8 +11,8 @@ class User < ApplicationRecord
     password_format = "must include an uppercase letter, a lowercase letter, and a digit"
     validates :password, presence: true, length: { minimum: 8 }, 
                          format: { with: VALID_PASSWORD_REGEX, 
-                                   message: password_format }, 
-                         allow_nil: true
+                                   message: password_format },
+                                   allow_nil: true
 
     # Returns the hash digest of the given string.
     def User.digest(string)
