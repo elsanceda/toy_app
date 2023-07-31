@@ -28,7 +28,7 @@ class UsersIndexAdminTest < UsersIndexAdmin
   end
 
   test "should have delete links" do
-    first_page_of_users = User.paginate(page: 1)
+    first_page_of_users = User.where(activated: true).paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       unless user == @admin
@@ -45,16 +45,16 @@ class UsersIndexAdminTest < UsersIndexAdmin
     assert_redirected_to users_url
   end
 
-  #test "should display only activated users" do
-  #  # Deactivate the first user on the page.
-  #  # Making an inactive fixture user isn't sufficient because Rails can't
-  #  # guarantee it would appear on the first page.
-  #  User.paginate(page: 1).first.toggle!(:activated)
-  #  # Ensure that all the displayed users are activated.
-  #  assigns(:users).each do |user|
-  #    assert user.activated?
-  #  end
-  #end
+  test "should display only activated users" do
+    # Deactivate the first user on the page.
+    # Making an inactive fixture user isn't sufficient because Rails can't
+    # guarantee it would appear on the first page.
+    User.paginate(page: 1).first.toggle!(:activated)
+    # Ensure that all the displayed users are activated.
+    assigns(:users).each do |user|
+      assert user.activated?
+    end
+  end
 end
 
 class UsersNonAdminIndexTest < UsersIndex
