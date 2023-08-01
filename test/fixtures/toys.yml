@@ -7,11 +7,13 @@ figure:
 
 teddy:
   name: "Childhood teddy bear"
+  description: "A teddy bear I used to own as a kid"
   created_at: <%= 3.years.ago %>
   user: michael
 
 cars:
   name: "My collection of toy cars"
+  description: "All the toy cars I've been collecting over the years!"
   created_at: <%= 2.hours.ago %>
   user: michael
 
@@ -19,3 +21,11 @@ most_recent:
   name: "Most recent toy"
   created_at: <%= Time.zone.now %>
   user: michael
+
+<% 30.times do |n| %>
+toy_<%= n %>:
+  name: <%= Faker::Lorem.sentence(word_count: 2) %>
+  description: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 42.days.ago %>
+  user: michael
+<% end %>

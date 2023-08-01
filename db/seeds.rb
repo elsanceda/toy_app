@@ -27,3 +27,11 @@ User.create!(name:  "Example User",
                  activated: true,
                  activated_at: Time.zone.now)
 end
+
+# Generate microposts for a subset of users.
+users = User.order(:created_at).take(6)
+10.times do
+  name = Faker::Lorem.sentence(word_count: 3)
+  description = Faker::Lorem.sentence(word_count: 15)
+  users.each { |user| user.toys.create!(name: name, description: description) }
+end

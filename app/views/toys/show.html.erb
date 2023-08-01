@@ -1,0 +1,14 @@
+<% provide(:title, @toy.name) %>
+<div class="row">
+    <div class="col-md-5">
+        <section class="toy_info">
+            <h1>
+                <%= @toy.name %>
+            </h1>
+
+            <span class="desc"><%= @toy.description unless @toy.description.nil? %></span>
+
+            <span class="user">From: <%= link_to @toy.user.name, @toy.user %></span>
+        </section>
+    </div>
+</div>
