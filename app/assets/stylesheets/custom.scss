@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "carousel.css";
 
 /* mixins, variables, etc. */
 
@@ -277,9 +278,20 @@ input {
 
 .toy {
     margin-bottom: 2rem;
-    padding: 15px;
+    max-width: 30rem;
     border: 1px solid #e8e8e8;
     border-radius: 10px;
+    .toy-img {
+        text-align: center;
+    }
+    img {
+        max-width: 100%;
+        margin: auto;
+        border-radius: 10px 10px 0px 0px;
+    }
+    .toy-name {
+        padding: 15px;
+    }
 }
 
 .toy-link {
@@ -308,6 +320,10 @@ input {
         padding-top: 5px;
         border-top: 2px solid #e8e8e8
     }
+}
+
+.carousel.active {
+    display: block;
 }
   
 aside {

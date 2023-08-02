@@ -1,5 +1,15 @@
 <% provide(:title, @toy.name) %>
 <div class="row">
+    <% if @toy.images.attached? %>
+        <div class="col-md-7">
+            <% if @toy.images.count == 1 %>
+                <%= image_tag @toy.images.first.variant(:display) %>
+            <% else %>
+                <%= render 'carousel' %>
+            <% end %>
+        </div>
+    <% end %>
+
     <div class="col-md-5">
         <section class="toy-info">
             <h1>

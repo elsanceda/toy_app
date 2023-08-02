@@ -13,6 +13,7 @@ class ToysController < ApplicationController
 
     def create
         @toy = current_user.toys.build(toy_params)
+        @toy.images.attach(params[:images])
         if @toy.save
             flash[:success] = "Toy uploaded!"
             redirect_to session[:forwarding_url] || root_url
@@ -43,7 +44,7 @@ class ToysController < ApplicationController
     private
 
         def toy_params
-            params.require(:toy).permit(:name, :description)
+            params.require(:toy).permit(:name, :description, images: [])
         end
 
         def correct_user

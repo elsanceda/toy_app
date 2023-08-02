@@ -9,9 +9,10 @@
         <%= f.text_area :description, placeholder: "Add a description" %>
     </div>
 
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <span class="image">
+        <%= f.label :images %>
+        <%= f.file_field :images, multiple: true, accept: "image/jpeg,image/gif,image/png" %>
+    </span>
 
-    <%# <span class="image"> %>
-        <%#= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
-    <%# </span> %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
