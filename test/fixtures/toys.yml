@@ -2,6 +2,7 @@
 
 figure:
   name: "My favorite action figure"
+  description: "A limited-edition figure of Hero X"
   created_at: <%= 10.minutes.ago %>
   user: michael
 

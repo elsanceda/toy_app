@@ -1,11 +1,13 @@
 <div class="col-md-4">
-    <div class="toy card" id="toy-<%= toy.id %>">
-        <%# <div class="card-img-top"> %>
-            <%#= image_tag toy.image.variant(:display) %>
-        <%# </div> %>
-        <div class="card-body">
-            <h4 class="card-title"><%= toy.name %></h4>
-            <%= link_to "View", toy, class: "btn btn-sm btn-primary" %>
+    <%= link_to toy, :class => "toy-link" do %>
+        <div class="toy card" id="toy-<%= toy.id %>">
+            <%# <div class="card-img-top"> %>
+                <%#= image_tag toy.image.variant(:display) %>
+            <%# </div> %>
+            <div class="card-body">
+                <h4 class="card-title"><%= toy.name %></h4>
+                <%# <%= link_to "View", toy, class: "btn btn-sm btn-secondary" %>
+            </div>
         </div>
-    </div>
+    <% end %>
 </div>

@@ -1,14 +1,22 @@
 <% provide(:title, @toy.name) %>
 <div class="row">
     <div class="col-md-5">
-        <section class="toy_info">
+        <section class="toy-info">
             <h1>
                 <%= @toy.name %>
             </h1>
 
             <span class="desc"><%= @toy.description unless @toy.description.nil? %></span>
+            
+            <span class="user">Uploaded by: <%= link_to @toy.user.name, @toy.user %></span>
 
-            <span class="user">From: <%= link_to @toy.user.name, @toy.user %></span>
+            <% if current_user?(@toy.user) %>
+                <%= link_to "Edit", edit_toy_path(@toy),
+                                        class: "btn btn-sm btn-primary" %>
+                <%= link_to "Delete", @toy, data: { "turbo-method": :delete,
+                                                     turbo_confirm: "You sure?" },
+                                            class: "btn btn-sm btn-danger" %>
+            <% end %>
         </section>
     </div>
 </div>

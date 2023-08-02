@@ -1,3 +1,22 @@
-<div class="center jumbotron">
-    <%= render 'welcome' %>
+<% unless logged_in? %>
+    <div class="welcome-box">
+        <div class="center jumbotron">
+            <%= render 'welcome' %>
+        </div>
+    </div>
+<% end %>
+
+<div class="toys">
+    <span class="flex">
+        <h1>Toys</h1>
+        <%= render 'shared/new_toy' %>
+    </span>
+
+    <%= will_paginate @toys %>
+
+    <div class="row">
+        <%= render @toys %>
+    </div>
+
+    <%= will_paginate @toys %>
 </div>
