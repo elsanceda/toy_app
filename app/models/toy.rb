@@ -2,7 +2,7 @@ class Toy < ApplicationRecord
   belongs_to :user
   has_many_attached :images do |attachable|
     attachable.variant :thumbnail, resize_to_limit: [300, nil]
-    attachable.variant :display, resize_to_limit: [700, nil]
+    attachable.variant :display, resize_to_limit: [700, 700]
   end
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true

@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @toys = @user.toys.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
+    @toys = @user.toys.includes(images_attachments: :blob).paginate(page: params[:page])
   end  
 
   def new

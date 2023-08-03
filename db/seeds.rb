@@ -16,7 +16,7 @@ User.create!(name:  "Example User",
              activated_at: Time.zone.now)
 
 # Generate a bunch of additional users.
-99.times do |n|
+4.times do |n|
     name = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
     password = "Password1"
@@ -28,10 +28,22 @@ User.create!(name:  "Example User",
                  activated_at: Time.zone.now)
 end
 
-# Generate microposts for a subset of users.
-users = User.order(:created_at).take(6)
-10.times do
+# Generate toys for a subset of users.
+users = User.order(:created_at).take(5)
+users.each_with_index do |user, n|
   name = Faker::Lorem.sentence(word_count: 3)
   description = Faker::Lorem.sentence(word_count: 15)
-  users.each { |user| user.toys.create!(name: name, description: description) }
+  toy = Toy.new(name: name, description: description)
+  toy.user = user
+  toy.images.attach(
+    io: File.open(Rails.root.join("app/assets/images/toy-#{n+1}.jpg")), 
+    filename: "toy-#{n+1}.jpg"
+  )
+  toy.save!
 end
+
+# 5.times do |n|
+#   name = Faker::Lorem.sentence(word_count: 3)
+#   description = Faker::Lorem.sentence(word_count: 15)
+#   users.each { |user| user.toys.create!(name: name, description: description) }
+# end

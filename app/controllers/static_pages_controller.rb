@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @toys = Toy.paginate(page: params[:page])
+    @toys = Toy.includes(images_attachments: :blob).paginate(page: params[:page])
   end
 
   def about

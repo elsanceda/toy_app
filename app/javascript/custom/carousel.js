@@ -9,14 +9,14 @@ document.addEventListener("turbo:load", function() {
         currentItem = (index + items.length) % items.length;
     }
 
-    function goToItem(n) {
-    	if (n < currentItem) {
+    function goToItem(index) {
+    	if (index < currentItem) {
     		hideItem('to-right');
-    		currentItem = n;
+    		currentItem = index;
     		showItem('from-left');
     	} else {
     		hideItem('to-left');
-    		currentItem = n;
+    		currentItem = index;
     		showItem('from-right');
     	}
     }

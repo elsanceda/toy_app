@@ -4,7 +4,7 @@ class ToysController < ApplicationController
     before_action :previous_url,   only: [:new, :show]
 
     def show
-        @toy = Toy.find(params[:id])
+        @toy = Toy.includes(:user, images_attachments: :blob).find(params[:id])
     end
 
     def new
