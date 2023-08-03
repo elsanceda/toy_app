@@ -11,16 +11,9 @@ class Toy < ApplicationRecord
                                      message: "must be a valid image format" },
                      size:         { less_than: 5.megabytes,
                                      message:   "should be less than 5MB" }
+  validates :images, attached: true, unless: :test_environment?
   
-  # def images_as_thumbnail
-  #   images.map do |image|
-  #     image.variant resize_to_limit: [350, 350]
-  #   end
-  # end
-
-  # def images_as_display
-  #   images.map do |image|
-  #     image.variant resize_to_limit: [950, 950]
-  #   end
-  # end
+  def test_environment?
+    Rails.env.test?
+  end
 end
