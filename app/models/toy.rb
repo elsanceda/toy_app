@@ -1,7 +1,7 @@
 class Toy < ApplicationRecord
   belongs_to :user
   has_many_attached :images do |attachable|
-    attachable.variant :thumbnail, resize_to_limit: [300, nil]
+    attachable.variant :thumbnail, resize_and_pad: [500, 500, gravity: 'center', background: '#fff']
     attachable.variant :display, resize_to_limit: [700, 700]
   end
   default_scope -> { order(created_at: :desc) }
