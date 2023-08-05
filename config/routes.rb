@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'password_resets/new'
-  get 'password_resets/edit'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
